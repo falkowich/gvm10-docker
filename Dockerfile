@@ -1,8 +1,7 @@
 FROM ubuntu:18.04
-
-COPY conf/redis.config /etc/redis/redis.config
+ 
 COPY conf/openvassd.conf /usr/local/etc/openvas/openvassd.conf
-COPY script/startup.sh /startup.sh
+COPY script/entrypoint.sh /entrypoint.sh
 
 ENV DEBIAN_FRONTEND=noninteractive \
     GSE_PASSWORD=admin \
@@ -110,12 +109,7 @@ RUN  cd ${SRC_PATH}/openvas-scanner-6.0.0 ;\
     make install ;\
     cd ${SRC_PATH}
 
-# Fix redis for default openvas install
-RUN cp /etc/redis/redis.conf /etc/redis/redis.orig ;\
-    cp ${SRC_PATH}/openvas-scanner/build/doc/redis_config_examples/redis_4_0.conf /etc/redis/redis.conf ;\
-    sed -i 's|/usr/local/var/run/openvas-redis.pid|/var/run/redis/redis-server.pid|g' /etc/redis/redis.conf ;\
-    sed -i 's|/tmp/redis.sock|/var/run/redis/redis-server.sock|g' /etc/redis/redis.conf ;\
-    sed -i 's|dir ./|dir /var/lib/redis|g' /etc/redis/redis.conf
+COPY conf/redis.config /etc/redis/redis.conf
 
 RUN service redis-server restart
 
@@ -153,5 +147,5 @@ RUN greenbone-certdata-sync ;\
 
 ENV BUILD=""
 
-CMD /startup.sh
+CMD /entrypoint.sh
 EXPOSE 80 443 9390

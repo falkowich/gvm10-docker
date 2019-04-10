@@ -1,10 +1,7 @@
 #!/bin/bash
 
 DATAVOL=/usr/local/var/lib/gvm/
-DBVOL=/var/lib/postgresql/
-#OV_PASSWORD=${OV_PASSWORD:-admin}
 
-/postgresqlconf.sh
 
 # Restart redis
 service redis-server restart
