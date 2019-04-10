@@ -1,0 +1,13 @@
+version: '3'
+services:
+  gse:
+    build: .
+    ports: 
+      - 443:443
+    restart: always
+    volumes:
+      - gse-data:/var/lib/postgresql/data
+      - gse-conf:/var/lib/openvas/mgr
+volumes:
+  gse-data:
+  gse-conf:
