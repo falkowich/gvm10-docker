@@ -136,17 +136,6 @@ RUN cd ${SRC_PATH}/gsa-8.0.0 ;\
     make install ;\
     cd ${SRC_PATH}
 
- # fix certs
-RUN gvm-manage-certs -a
-
-# create admin user
-RUN gvmd --create-user=admin --password=admin
-
-RUN greenbone-certdata-sync ;\
-    greenbone-scapdata-sync
-
-#ENV BUILD=""
-
 RUN rm  /root/${SRC_PATH}/ -rf
 
 CMD /entrypoint.sh
