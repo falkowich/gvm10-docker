@@ -16,22 +16,28 @@ set -o pipefail
 # fi
 
 
-# Wait for us to be able to connect to MySQL before proceeding
-echo "===> Waiting for REDIS service"
-service redis-server restart
-X="$(redis-cli -s /var/run/redis/redis-server.sock ping)"
-while  [ "${X}" != "PONG" ]; do
-        echo "Redis not yet ready..."
-        sleep 1
-        X="$(redis-cli -s /var/run/redis/redis-server.sock ping)"
-done
-
 
 # Generate certificates if not ready
 if $(/usr/local/bin/gvm-manage-certs -V | grep -q 'ERROR:') ; then
     echo "---> Generating Certs"
     /usr/local/bin/gvm-manage-certs -af
 fi
+
+
+# Wait for us to be able to connect to REDIS before proceeding
+echo "===> Waiting for REDIS service"
+while [ ! -e /var/run/redis/redis-server.sock ]
+do
+  service redis-server restart
+  sleep 2
+done
+
+X="$(redis-cli -s /var/run/redis/redis-server.sock ping)"
+while  [ "${X}" != "PONG" ]; do
+        echo "Redis not yet ready..."
+        sleep 1
+        X="$(redis-cli -s /var/run/redis/redis-server.sock ping)"
+done
 
 # Check if admin exists, if not create admin
 if $(/usr/local/sbin/gvmd --get-users | grep -q 'admin') ; then
@@ -40,6 +46,13 @@ else
     echo "---> Creating admin with new password"
     /usr/local/sbin/gvmd --create-user=admin --password=${USER_PASSWORD}
 fi
+
+
+# Check certs
+echo "---> Starting Certsync.." ;\
+/usr/local/sbin/greenbone-certdata-sync ;\
+echo "---> Starting Scapsync.." ;\
+/usr/local/sbin/greenbone-scapdata-sync
 
 
 # Start GVM stuffs

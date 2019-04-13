@@ -88,7 +88,7 @@ RUN  cd ${SRC_PATH}/gvm-libs-10.0.0 ;\
     cd build ;\
     cmake .. ;\
     make ;\
-    make doc-full ;\
+    #make doc-full ;\
     make install ;\
     cd ${SRC_PATH}
 
@@ -105,7 +105,7 @@ RUN  cd ${SRC_PATH}/openvas-scanner-6.0.0 ;\
     cd build/ ;\
     cmake .. ;\
     make ;\
-    make doc-full ;\
+    #make doc-full ;\
     make install ;\
     cd ${SRC_PATH}
 
@@ -120,7 +120,7 @@ RUN cd ${SRC_PATH}/gvmd-8.0.0 ;\
     cd build/ ;\
     cmake .. ;\
     make ;\
-    make doc-full ;\
+    #make doc-full ;\
     make install ;\
     cd ${SRC_PATH}
 
@@ -132,7 +132,7 @@ RUN cd ${SRC_PATH}/gsa-8.0.0 ;\
     cd build/ ;\
     cmake .. ;\
     make ;\
-    make doc-full ;\
+    #make doc-full ;\
     make install ;\
     cd ${SRC_PATH}
 
@@ -145,7 +145,9 @@ RUN gvmd --create-user=admin --password=admin
 RUN greenbone-certdata-sync ;\
     greenbone-scapdata-sync
 
-ENV BUILD=""
+#ENV BUILD=""
+
+RUN rm  /root/${SRC_PATH}/ -rf
 
 CMD /entrypoint.sh
 EXPOSE 80 443 9390
