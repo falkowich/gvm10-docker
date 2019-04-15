@@ -2,7 +2,7 @@
 
 ![Docker Cloud Automated build](https://img.shields.io/docker/cloud/automated/falkowich/gvm10.svg?style=plastic) ![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/falkowich/gvm10.svg?style=plastic)  ![Docker Pulls](https://img.shields.io/docker/pulls/falkowich/gvm10.svg?style=plastic)
 
-Suggestions and bugreports are always welcome, just post an issue ovar at [falkowich/gvm10-docker](https://github.com/falkowich/gvm10-docker)
+Suggestions and bugreports are always welcome, just post an issue over at [falkowich/gvm10-docker](https://github.com/falkowich/gvm10-docker)
 
 ## Download latest image
 
