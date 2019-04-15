@@ -2,19 +2,19 @@
 
 WIP...
 
-### Pull and run
+## Pull and run
 
-```docker pull falkowich/gvm10:lastest```  
+```docker pull falkowich/gvm10:latest```  
 
-#### Test out with non persistant storage and sqlite3
+### Test out with non persistant storage and sqlite3
 
 ```docker run -p 443:443 falkowich/gvm10:latest```
 
-#### Start with mounted volume and sqlite3
+### Start with mounted volume and sqlite3
 
 This will mount /usr/local/var/lib/gvm/ in /var/lib/docker/volumes/gvm/_data/ as docker volume gvm.
 
-```
+```bash
 docker run \
        -p 443:443 \
        -v gvm:/usr/local/var/lib/gvm/ \
@@ -24,7 +24,7 @@ docker run \
 
 To check out info about the volume
 
-``` 
+```bash
 docker volume inspect gvm
 [
     {
@@ -39,21 +39,24 @@ docker volume inspect gvm
 ]
 ```
 
-### GSA:
+### GSA
+
 user/pass - admin/admin
 
-### Disclamer:
+### Disclamer
+
 This is an unofficial build, just to test out new GVM 10 releases.  
-Much info was taken from https://github.com/mikesplain/openvas-docker that makes good production ready container builds.
+Much info was taken from [mikesplain/openvas-docker](https://github.com/mikesplain/openvas-docker) that makes good production ready container builds.
 
 More images, and better quality are hopefully coming here later :)
 
 ## ToDo / Thoughts / Goals
+
 * postgresql build
 * docker-compose files.
 * better logging?
 * separated containers for sql?
 * master/slave images?
-* openvas-check-setup 
+* openvas-check-setup
 * tools like arachni etc
 * suggestions are always welcome

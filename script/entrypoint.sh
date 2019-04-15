@@ -44,7 +44,7 @@ if $(/usr/local/sbin/gvmd --get-users | grep -q 'admin') ; then
     echo "---> Admin already exists.."
 else
     echo "---> Creating admin with new password"
-    /usr/local/sbin/gvmd --create-user=admin --password=${USER_PASSWORD}
+    /usr/local/sbin/gvmd --create-user=admin --password=admin
 fi
 
 
