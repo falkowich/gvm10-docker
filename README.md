@@ -2,7 +2,7 @@
 
 ![Docker Cloud Automated build](https://img.shields.io/docker/cloud/automated/falkowich/gvm10.svg?style=plastic) ![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/falkowich/gvm10.svg?style=plastic)  ![Docker Pulls](https://img.shields.io/docker/pulls/falkowich/gvm10.svg?style=plastic)
 
-WIP...
+Suggestions and bugreports are always welcome, just post an issue ovar at [falkowich/gvm10-docker](https://github.com/falkowich/gvm10-docker)
 
 ## Download latest image
 
@@ -54,11 +54,11 @@ More images, and better quality are hopefully coming here later :)
 
 ## ToDo / Thoughts / Goals
 
+* Fix workflow with testing before build.. _(..Lots of PEBKAC tonight..)_
 * postgresql build
 * docker-compose files.
 * better logging?
 * separated containers for sql?
 * master/slave images?
-* openvas-check-setup
+* openvas-check-setup type of check?
 * tools like arachni etc
-* suggestions are always welcome
