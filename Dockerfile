@@ -88,7 +88,7 @@ RUN  cd ${SRC_PATH}/gvm-libs-10.0.0 ;\
     cd build ;\
     cmake .. ;\
     make ;\
-    #make doc-full ;\
+    make doc-full ;\
     make install ;\
     cd ${SRC_PATH}
 
@@ -105,7 +105,7 @@ RUN  cd ${SRC_PATH}/openvas-scanner-6.0.0 ;\
     cd build/ ;\
     cmake .. ;\
     make ;\
-    #make doc-full ;\
+    make doc-full ;\
     make install ;\
     cd ${SRC_PATH}
 
@@ -120,7 +120,7 @@ RUN cd ${SRC_PATH}/gvmd-8.0.0 ;\
     cd build/ ;\
     cmake .. ;\
     make ;\
-    #make doc-full ;\
+    make doc-full ;\
     make install ;\
     cd ${SRC_PATH}
 
@@ -132,7 +132,7 @@ RUN cd ${SRC_PATH}/gsa-8.0.0 ;\
     cd build/ ;\
     cmake .. ;\
     make ;\
-    #make doc-full ;\
+    make doc-full ;\
     make install ;\
     cd ${SRC_PATH}
 
