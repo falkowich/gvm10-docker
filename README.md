@@ -18,7 +18,7 @@ This will mount /usr/local/var/lib/gvm/ in /var/lib/docker/volumes/gvm/_data/ as
 docker run \
        -p 443:443 \
        -v gvm:/usr/local/var/lib/gvm/ \
-        falkowich/gvm10:lastest
+        falkowich/gvm10:latest
 
 ```
 
