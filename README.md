@@ -56,7 +56,7 @@ DB maintanance (vacuum, analyze, cleanup-config-prefs, cleanup-port-names, clean
 ```docker exec -i gvm10 sh -c "/usr/local/sbin/gvmd -v --optimize=vacuum"```
 
 Change admin password  
-```docker exec -i gvm10 sh -c "/usr/local/sbin/gvmd -v --user=admin --password==super-secret-password"```
+```docker exec -i gvm10 sh -c "/usr/local/sbin/gvmd -v --user=admin --new-password=super-secret-password"```
 
 ### GSA
 
