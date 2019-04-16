@@ -12,8 +12,8 @@
     - [Start in frontend](#start-in-frontend)
     - [Start in backend](#start-in-backend)
     - [Maintanance with docker-compose](#maintanance-with-docker-compose)
-    - [GSA](#gsa)
-    - [Disclamer](#disclamer)
+  - [GSA](#gsa)
+  - [Disclamer](#disclamer)
   - [ToDo / Thoughts / Goals](#todo--thoughts--goals)
 
 Suggestions and bugreports are always welcome, just post an issue over at [falkowich/gvm10-docker](https://github.com/falkowich/gvm10-docker)
@@ -101,11 +101,11 @@ DB maintanance (vacuum, analyze, cleanup-config-prefs, cleanup-port-names, clean
 Change admin password  
 ```docker-compose exec gvm10 /usr/local/sbin/gvmd -v --user=admin --new-password=super-secret-password```
 
-### GSA
+## GSA
 
 user/pass - admin/admin
 
-### Disclamer
+## Disclamer
 
 This is an unofficial build, just to test out new GVM 10 releases.  
 Much info was taken from [mikesplain/openvas-docker](https://github.com/mikesplain/openvas-docker) that makes good production ready container builds.
