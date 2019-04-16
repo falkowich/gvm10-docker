@@ -1,3 +1,7 @@
+# gvm10-docker
+
+![Docker Cloud Automated build](https://img.shields.io/docker/cloud/automated/falkowich/gvm10.svg?style=plastic) ![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/falkowich/gvm10.svg?style=plastic)  ![Docker Pulls](https://img.shields.io/docker/pulls/falkowich/gvm10.svg?style=plastic)
+
 - [gvm10-docker](#gvm10-docker)
   - [Download latest image](#download-latest-image)
     - [Test out with non persistant storage and sqlite3](#test-out-with-non-persistant-storage-and-sqlite3)
@@ -6,10 +10,6 @@
     - [GSA](#gsa)
     - [Disclamer](#disclamer)
   - [ToDo / Thoughts / Goals](#todo--thoughts--goals)
-
-# gvm10-docker
-
-![Docker Cloud Automated build](https://img.shields.io/docker/cloud/automated/falkowich/gvm10.svg?style=plastic) ![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/falkowich/gvm10.svg?style=plastic)  ![Docker Pulls](https://img.shields.io/docker/pulls/falkowich/gvm10.svg?style=plastic)
 
 Suggestions and bugreports are always welcome, just post an issue over at [falkowich/gvm10-docker](https://github.com/falkowich/gvm10-docker)
 
