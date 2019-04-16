@@ -3,6 +3,7 @@
 ## 2019-04-16
 
 - [README]: Updated readme with some goodtohave commands.[Falk]
+- [FEATURE]: Updated readme with some docker-compose info.[Falk]
 
 ## 2019-04-15
 
