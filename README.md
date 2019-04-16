@@ -20,8 +20,8 @@ This will mount /usr/local/var/lib/gvm/ in /var/lib/docker/volumes/gvm/_data/ as
 docker run \
        -p 443:443 \
        -v gvm:/usr/local/var/lib/gvm/ \
-        falkowich/gvm10:latest
-
+       --name gvm10 \
+       falkowich/gvm10:latest
 ```
 
 To check out info about the volume
@@ -40,6 +40,23 @@ docker volume inspect gvm
     }
 ]
 ```
+
+#### Maintanance
+
+Sync SCAP data  
+```docker exec -i gvm10 sh -c "/usr/local/sbin/greenbone-scapdata-sync"```
+
+Sync CERT data  
+```docker exec -i gvm10 sh -c "/usr/local/sbin/greenbone-certdata-sync```
+ 
+Sync NVT data  
+```docker exec -i gvm10 sh -c "/usr/local/sbin/greenbone-nvt-sync"```
+
+DB maintanance (vacuum, analyze, cleanup-config-prefs, cleanup-port-names, cleanup-result-severities, cleanup-schedule-times, rebuild-report-cache or update-report-cache)  
+```docker exec -i gvm10 sh -c "/usr/local/sbin/gvmd -v --optimize=vacuum"```
+
+Change admin password  
+```docker exec -i gvm10 sh -c "/usr/local/sbin/gvmd -v --user=admin --password==super-secret-password"```
 
 ### GSA
 
