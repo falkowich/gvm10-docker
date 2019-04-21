@@ -161,10 +161,12 @@ user/pass - admin/admin
 
 ## Disclamer
 
-This is an unofficial build, just to test out new GVM 10 releases.  
-Much info was taken from [mikesplain/openvas-docker](https://github.com/mikesplain/openvas-docker) that makes good production ready container builds.
+This is an unofficial build and my try to build gvm10 docker containers.  
+One goal is to get a working master/slave setup, with a sane workflow.  
+Hopefully an usable ansible playbook that can help with the slaves..
+But then, perhaps it doesn't get more interesting than this :)
 
-More images, and better quality are hopefully coming here later :)
+Much info was learned from [mikesplain/openvas-docker](https://github.com/mikesplain/openvas-docker) that makes good production ready container builds.
 
 ## ToDo / Thoughts / Goals
 
