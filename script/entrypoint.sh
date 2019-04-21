@@ -3,7 +3,9 @@
 set -o pipefail
 
 # Wait for us to be able to connect to REDIS before proceeding
+# Wait for us to be able to connect to REDIS before proceeding
 echo "===> Waiting for REDIS service"
+service redis-server restart
 while [ ! -e /var/run/redis/redis-server.sock ]
 do
   service redis-server restart
