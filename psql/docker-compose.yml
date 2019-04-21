@@ -1,0 +1,16 @@
+version: '3'
+services:
+  
+  gvm10-pg:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports: 
+      - 443:443
+    restart: always
+    volumes:
+      - gvm:/usr/local/var/lib/gvm/
+      - psql:/var/lib/postgresql/data
+volumes:
+  gvm:
+  psql:
