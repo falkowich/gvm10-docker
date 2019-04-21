@@ -11,11 +11,13 @@
     - [Use with "docker run"](#use-with-%22docker-run%22-1)
       - [Start with non-persistant storage](#start-with-non-persistant-storage-1)
       - [Start with mounted volume](#start-with-mounted-volume-1)
-      - [Maintanance with docker](#maintanance-with-docker)
   - [Use with docker-compose](#use-with-docker-compose)
     - [Start in frontend](#start-in-frontend)
     - [Start in backend](#start-in-backend)
-    - [Maintanance with docker-compose](#maintanance-with-docker-compose)
+    - [Check logs](#check-logs)
+  - [Maintanance](#maintanance)
+    - [With docker-compose](#with-docker-compose)
+    - [With docker](#with-docker)
   - [GSA](#gsa)
   - [Disclamer](#disclamer)
   - [ToDo / Thoughts / Goals](#todo--thoughts--goals)
@@ -103,23 +105,6 @@ docker volume inspect gvm
 ]
 ```
 
-#### Maintanance with docker
-
-Sync SCAP data  
-```docker exec -i gvm10 sh -c "/usr/local/sbin/greenbone-scapdata-sync"```
-
-Sync CERT data  
-```docker exec -i gvm10 sh -c "/usr/local/sbin/greenbone-certdata-sync"```
-
-Sync NVT data  
-```docker exec -i gvm10 sh -c "/usr/local/sbin/greenbone-nvt-sync"```
-
-DB maintanance (vacuum, analyze, cleanup-config-prefs, cleanup-port-names, cleanup-result-severities, cleanup-schedule-times, rebuild-report-cache or update-report-cache)  
-```docker exec -i gvm10 sh -c "/usr/local/sbin/gvmd -v --optimize=vacuum"```
-
-Change admin password  
-```docker exec -i gvm10 sh -c "/usr/local/sbin/gvmd -v --user=admin --new-password=super-secret-password"```
-
 ## Use with docker-compose
 
 ### Start in frontend
@@ -130,7 +115,13 @@ Change admin password
 
 ```docker-compose up -d```
 
-### Maintanance with docker-compose
+### Check logs
+
+```docker-compose logs -f```
+
+## Maintanance
+
+### With docker-compose
 
 Sync SCAP data  
 ```docker-compose exec gvm10 /usr/local/sbin/greenbone-scapdata-sync```
@@ -146,6 +137,23 @@ DB maintanance (vacuum, analyze, cleanup-config-prefs, cleanup-port-names, clean
 
 Change admin password  
 ```docker-compose exec gvm10 /usr/local/sbin/gvmd -v --user=admin --new-password=super-secret-password```
+
+### With docker
+
+Sync SCAP data  
+```docker exec -i gvm10 sh -c "/usr/local/sbin/greenbone-scapdata-sync"```
+
+Sync CERT data  
+```docker exec -i gvm10 sh -c "/usr/local/sbin/greenbone-certdata-sync"```
+
+Sync NVT data  
+```docker exec -i gvm10 sh -c "/usr/local/sbin/greenbone-nvt-sync"```
+
+DB maintanance (vacuum, analyze, cleanup-config-prefs, cleanup-port-names, cleanup-result-severities, cleanup-schedule-times, rebuild-report-cache or update-report-cache)  
+```docker exec -i gvm10 sh -c "/usr/local/sbin/gvmd -v --optimize=vacuum"```
+
+Change admin password  
+```docker exec -i gvm10 sh -c "/usr/local/sbin/gvmd -v --user=admin --new-password=super-secret-password"```
 
 ## GSA
 
