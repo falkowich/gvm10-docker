@@ -3,11 +3,15 @@
 ![Docker Cloud Automated build](https://img.shields.io/docker/cloud/automated/falkowich/gvm10.svg?style=plastic) ![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/falkowich/gvm10.svg?style=plastic)  ![Docker Pulls](https://img.shields.io/docker/pulls/falkowich/gvm10.svg?style=plastic)
 
 - [gvm10-docker](#gvm10-docker)
-  - [Download image](#download-image)
-  - [Use with "docker run"](#use-with-%22docker-run%22)
-    - [Start with non-persistant storage and sqlite3](#start-with-non-persistant-storage-and-sqlite3)
-    - [Start with mounted volume and sqlite3](#start-with-mounted-volume-and-sqlite3)
-    - [Maintanance with docker](#maintanance-with-docker)
+  - [Sqlite3 DB backend](#sqlite3-db-backend)
+    - [Use with "docker run"](#use-with-%22docker-run%22)
+      - [Start with non-persistant storage](#start-with-non-persistant-storage)
+      - [Start with mounted volume](#start-with-mounted-volume)
+  - [PostgrSQL DB backend](#postgrsql-db-backend)
+    - [Use with "docker run"](#use-with-%22docker-run%22-1)
+      - [Start with non-persistant storage](#start-with-non-persistant-storage-1)
+      - [Start with mounted volume](#start-with-mounted-volume-1)
+      - [Maintanance with docker](#maintanance-with-docker)
   - [Use with docker-compose](#use-with-docker-compose)
     - [Start in frontend](#start-in-frontend)
     - [Start in backend](#start-in-backend)
@@ -15,29 +19,31 @@
   - [GSA](#gsa)
   - [Disclamer](#disclamer)
   - [ToDo / Thoughts / Goals](#todo--thoughts--goals)
+  - [Done [sorta]](#done-sorta)
 
 Suggestions and bugreports are always welcome, just post an issue over at [falkowich/gvm10-docker](https://github.com/falkowich/gvm10-docker)
 
-## Download image
+## Sqlite3 DB backend
 
-```docker pull falkowich/gvm10:latest```  
+```docker pull falkowich/gvm10:sqlite```  
 
-## Use with "docker run"
+### Use with "docker run"
 
-### Start with non-persistant storage and sqlite3
+#### Start with non-persistant storage
 
-```docker run -p 443:443 falkowich/gvm10:latest```
+```docker run -p 443:443 falkowich/gvm10:sqlite```
 
-### Start with mounted volume and sqlite3
+#### Start with mounted volume
 
-This will mount /usr/local/var/lib/gvm/ in /var/lib/docker/volumes/gvm/_data/ as docker volume gvm.
+This will mount /usr/local/var/lib/gvm/ in /var/lib/docker/volumes/gvm/_data/ as docker volume gvm.  
+**WARNING** - This volume will be lost if/when container is pruned
 
 ```bash
 docker run \
        -p 443:443 \
        -v gvm:/usr/local/var/lib/gvm/ \
        --name gvm10 \
-       falkowich/gvm10:latest
+       falkowich/gvm10:sqlite
 ```
 
 To check out info about the volume
@@ -57,7 +63,47 @@ docker volume inspect gvm
 ]
 ```
 
-### Maintanance with docker
+## PostgrSQL DB backend
+
+```docker pull falkowich/gvm10:psql```  
+
+### Use with "docker run"
+
+#### Start with non-persistant storage
+
+```docker run -p 443:443 falkowich/gvm10:psql```
+
+#### Start with mounted volume
+
+**WARNING** - These volumes will be lost if/when container is pruned
+
+```bash
+docker run \
+       -p 443:443 \
+       -v gvm:/usr/local/var/lib/gvm \
+       -v psql:/var/lib/postgresql/data \
+       --name gvm10 \
+       falkowich/gvm10:psql
+```
+
+To check out info about the volume
+
+```bash
+docker volume inspect gvm
+[
+    {
+        "CreatedAt": "2019-04-13T19:22:15+02:00",
+        "Driver": "local",
+        "Labels": null,
+        "Mountpoint": "/var/lib/docker/volumes/gvm/_data",
+        "Name": "gvm",
+        "Options": null,
+        "Scope": "local"
+    }
+]
+```
+
+#### Maintanance with docker
 
 Sync SCAP data  
 ```docker exec -i gvm10 sh -c "/usr/local/sbin/greenbone-scapdata-sync"```
@@ -115,10 +161,14 @@ More images, and better quality are hopefully coming here later :)
 ## ToDo / Thoughts / Goals
 
 - Fix workflow with testing before build.. _(..Lots of PEBKAC tonight..)_
-- postgresql build
 - docker-compose files.
 - better logging?
-- separated containers for sql?
 - master/slave images?
 - openvas-check-setup type of check?
 - tools like arachni etc
+
+## Done [sorta]
+
+- ~~postgresql build~~
+- ~~separated containers for sql? (scrapped for the moment)~~
+- ~~better volume support~~
