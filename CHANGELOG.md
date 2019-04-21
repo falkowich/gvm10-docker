@@ -2,7 +2,7 @@
 
 ## 2019-04-21
 
-- [CLEANUP]: A first try to clean up the repo. Moved each active branch into directories in master. [Falk]
+- [CLEANUP]: A first try to clean up the repo. Moved each active branch into directories in master. [Falk] 
 
 ## 2019-04-19
 
