@@ -178,10 +178,12 @@ docker run \
 
 ### Slave Setup
 
+```bash
 docker run \
        -p 9391:9391 \
        -v gvm:/usr/local/var/lib/gvm/ \
        falkowich/gvm10:slave
+```
 
 Then on the slave (scanner):  
 ```docker exec -i gvm10 sh -c "/usr/local/sbin/gvmd -v --create-user=scanner-user"```
