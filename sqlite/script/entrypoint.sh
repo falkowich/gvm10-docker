@@ -46,9 +46,9 @@ echo "---> Starting Scapsync.." ;\
 echo "---> Starting OPENVASSD"
 openvassd
 echo "---> Starting GVMD"
-gvmd 
+gvmd --listen=0.0.0.0 --port=9391
 echo "---> Starting GSAD"
-gsad 
+gsad --mlisten=0.0.0.0 --mport=9391
 
 
 # WHATTODOWITTHIS?
