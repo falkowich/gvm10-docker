@@ -47,18 +47,14 @@ RUN apt-get update ;\
         perl-base \
         heimdal-dev \
         libpopt-dev \
-        graphviz \
-        nodejs \
+        #graphviz \
+        #nodejs \
         rpm \
         nsis \
         wget \
         sshpass \
         socat \
         snmp \
-        postgresql \
-        postgresql-contrib \
-        postgresql-server-dev-all \
-        libpq-dev \
         git \
         libldap2-dev \
         libfreeradius-dev \
@@ -68,18 +64,18 @@ RUN apt-get update ;\
         rsync \
         -yq 
 
-RUN curl --silent --show-error https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - ;\
-    echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list ;\
-    apt-get update ;\
-    apt-get install yarn -yq;\
-    rm -rf /var/lib/apt/lists/*
+#RUN curl --silent --show-error https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - ;\
+#    echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list ;\
+#    apt-get update ;\
+#    apt-get install yarn -yq;\
+#    rm -rf /var/lib/apt/lists/*
 
 RUN mkdir ${SRC_PATH} -p ;\
     cd ${SRC_PATH} ;\
     wget -O gvm-libs-10.0.0.tar.gz https://github.com/greenbone/gvm-libs/archive/v10.0.0.tar.gz ;\
     wget -O openvas-scanner-6.0.0.tar.gz https://github.com/greenbone/openvas-scanner/archive/v6.0.0.tar.gz;\
     wget -O gvmd-8.0.0.tar.gz https://github.com/greenbone/gvmd/archive/v8.0.0.tar.gz ;\
-    wget -O gsa-8.0.0.tar.gz https://github.com/greenbone/gsa/archive/v8.0.0.tar.gz ;\
+    #wget -O gsa-8.0.0.tar.gz https://github.com/greenbone/gsa/archive/v8.0.0.tar.gz ;\
     wget -O openvas-smb-1.0.5.tar.gz https://github.com/greenbone/openvas-smb/archive/v1.0.5.tar.gz ;\
     wget -O ospd-1.3.2.tar.gz https://github.com/greenbone/ospd/archive/v1.3.2.tar.gz
 
@@ -122,35 +118,25 @@ RUN greenbone-nvt-sync
 RUN cd ${SRC_PATH}/gvmd-8.0.0 ;\
     mkdir build ;\
     cd build/ ;\
-    cmake -DBACKEND=POSTGRESQL .. ;\
-    make ;\
-    #make doc-full ;\
-    make install ;\
-    cd ${SRC_PATH}
-
-# RUN sudo apt purge -y \
-#         postgresql \
-#         postgresql-contrib \
-#         postgresql-server-dev-all
-# 
-#COPY script/postgresqlconf.sh /postgresqlconf.sh
-
-#RUN chmod 0755 /postgresqlconf.sh ;\
-#    /postgresqlconf.sh
-
-RUN ldconfig
-
-RUN cd ${SRC_PATH}/gsa-8.0.0 ;\
-    sed -i 's/#ifdef GIT_REV_AVAILABLE/#ifdef GIT_REVISION/g' ${SRC_PATH}/gsa-8.0.0/gsad/src/gsad.c ;\
-    mkdir build ;\
-    cd build/ ;\
     cmake .. ;\
     make ;\
-    #make doc-full ;\
+#    make doc-full ;\
     make install ;\
     cd ${SRC_PATH}
+#
+RUN ldconfig
+#
+#RUN cd ${SRC_PATH}/gsa-8.0.0 ;\
+#    sed -i 's/#ifdef GIT_REV_AVAILABLE/#ifdef GIT_REVISION/g' ${SRC_PATH}/gsa-8.0.0/gsad/src/gsad.c ;\
+#    mkdir build ;\
+#    cd build/ ;\
+#    cmake .. ;\
+#    make ;\
+#    make doc-full ;\
+#    make install ;\
+#    cd ${SRC_PATH}
 
 RUN rm  /root/${SRC_PATH}/ -rf
 
 CMD /entrypoint.sh
-EXPOSE 80 443 9391
+EXPOSE 9391

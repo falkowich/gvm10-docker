@@ -139,4 +139,4 @@ RUN cd ${SRC_PATH}/gsa-8.0.0 ;\
 RUN rm  /root/${SRC_PATH}/ -rf
 
 CMD /entrypoint.sh
-EXPOSE 80 443 9390
+EXPOSE 80 443 9391

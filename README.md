@@ -19,6 +19,9 @@
     - [With docker-compose](#with-docker-compose)
     - [With docker](#with-docker)
   - [GSA](#gsa)
+  - [Master - Slave setup [take 1 :)]](#master---slave-setup-take-1)
+    - [Master Setup](#master-setup)
+    - [Slave Setup](#slave-setup)
   - [Disclamer](#disclamer)
   - [ToDo / Thoughts / Goals](#todo--thoughts--goals)
   - [Done [sorta]](#done-sorta)
@@ -158,6 +161,68 @@ Change admin password
 ## GSA
 
 user/pass - admin/admin
+
+## Master - Slave setup [take 1 :)]
+
+### Master Setup
+
+```bash
+docker run \
+       -p 443:443 \
+       -p 9391:9391 \
+       -v gvm:/usr/local/var/lib/gvm \
+       -v psql:/var/lib/postgresql/data \
+       --name gvm10 \
+       falkowich/gvm10:psql
+```
+
+### Slave Setup
+
+docker run \
+       -p 9391:9391 \
+       -v gvm:/usr/local/var/lib/gvm/ \
+       falkowich/gvm10:slave
+
+Then on the slave (scanner):  
+```docker exec -i gvm10 sh -c "/usr/local/sbin/gvmd -v --create-user=scanner-user"```
+
+Write down password or change to another one.  
+``` User created with password 'ca3c6307-c8d8-4b96-83c5-cdaffd803671'. ```
+
+Create a scanner in GSAD on the **MASTER** (I will checkout the cli way): 
+Configuration > Scanners > New Scanner:  
+```
+Name: Scanner01 
+Comment: Remote Scanner   
+Type: GMP Scanner 
+Host: IP on slave  
+Credentials: New Credentials 
+
+  Name: Slave01 Credentials  
+  Comment: Foo Bar 
+  Username: scanner-user 
+  Password: ca3c6307-c8d8-4b96-83c5-cdaffd803671  
+  [save]  
+[save]
+```
+
+On the **MASTER**:  
+```docker exec -i gvm10 sh -c "/usr/local/sbin/gvmd --get-scanners"```  
+
+Then you will get the newly created Scanner01, like this:  
+```33d23dc3-00f1-4e4a-82da-1f003303c322  Scanner01```
+
+From the **SLAVE** copy  /var/lib/docker/volumes/gvm/_data/CA/cacert.pem to the **MASTER** for example to /tmp/scanner01-cacert.pem
+
+On the **MASTER**:  
+```sudo cp /tmp/scanner01-cacert.pem /var/lib/docker/volumes/gvm/_data/CA/ -arv```
+
+Then on the **MASTER**:  
+```docker exec -i gvm10 sh -c "/usr/local/sbin/gvmd --modify-scanner=33d23dc3-00f1-4e4a-82da-1f003303c322 --scanner-ca-pub=/usr/local/var/lib/gvm/CA/scanner01-cacert.pem```
+
+Now you should be able to start scans from the MASTER and select scanner01 as scanner :)
+
+_This will be rewritten, with better information_
 
 ## Disclamer
 
