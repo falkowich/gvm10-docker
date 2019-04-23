@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 2019-04-23
+
+- [FEATURE]: First WIP with master-slave setups. [Falk]
+
 ## 2019-04-21
 
 - [CLEANUP]: A first try to clean up the repo. Moved each active branch into directories in master. [Falk] 
