@@ -3,6 +3,7 @@
 ![Docker Cloud Automated build](https://img.shields.io/docker/cloud/automated/falkowich/gvm10.svg?style=plastic) ![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/falkowich/gvm10.svg?style=plastic)  ![Docker Pulls](https://img.shields.io/docker/pulls/falkowich/gvm10.svg?style=plastic)
 
 - [gvm10-docker](#gvm10-docker)
+  - [Some examples and info](#some-examples-and-info)
   - [Sqlite3 DB backend](#sqlite3-db-backend)
     - [Use with "docker run"](#use-with-%22docker-run%22)
       - [Start with non-persistant storage](#start-with-non-persistant-storage)
@@ -26,7 +27,11 @@
   - [ToDo / Thoughts / Goals](#todo--thoughts--goals)
   - [Done [sorta]](#done-sorta)
 
-Suggestions and bugreports are always welcome, just post an issue over at [falkowich/gvm10-docker](https://github.com/falkowich/gvm10-docker)
+Suggestions and bugreports are always welcome, just post an issue over at [falkowich/gvm10-docker](https://github.com/falkowich/gvm10-docker)  
+
+## Some examples and info
+
+I tried to do a writeup how to use these images in a _(hopefully)_ working environment on [sadsloth.net](https://sadsloth.net/post/gmv10dockermasterslave/).
 
 ## Sqlite3 DB backend
 
