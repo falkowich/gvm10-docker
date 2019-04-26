@@ -128,6 +128,7 @@ RUN ldconfig
 
 RUN cd ${SRC_PATH}/gsa-8.0.0 ;\
     sed -i 's/#ifdef GIT_REV_AVAILABLE/#ifdef GIT_REVISION/g' ${SRC_PATH}/gsa-8.0.0/gsad/src/gsad.c ;\
+    sed -i 's/return root.get_result.commands_response.get_results_response.result/return root.get_result.get_results_response.result/g' ${SRC_PATH}/gsa-8.0.0/gsa/src/gmp/commands/results.js ;\
     mkdir build ;\
     cd build/ ;\
     cmake .. ;\

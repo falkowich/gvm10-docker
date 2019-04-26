@@ -1,13 +1,14 @@
 # CHANGELOG
 
+## 2019-04-26
+
+- [FEATURE] [edge]: A build with the live master branch from greenbone gitrepo. [Falk]
+- [BUG] [sqlite, psql]: Cherrypicked a fix from upstream from unrealeased GSA 8.0.1. [#3](https://github.com/falkowich/gvm10-docker/issues/3) [Falk]
+
+
 ## 2019-04-23
 
-- [FEATURE]: A build with the live master branch from greenbone gitrepo. [Falk]
-
-
-## 2019-04-23
-
-- [FEATURE]: First WIP with master-slave setups. [Falk]
+- [FEATURE] [sqlite, slave]: First WIP with master-slave setups. [Falk]
 
 ## 2019-04-21
 
