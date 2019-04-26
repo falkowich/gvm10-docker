@@ -37,11 +37,17 @@ I tried to do a writeup how to use these images in a _(hopefully)_ working envir
 
 ```docker pull falkowich/gvm10:sqlite```  
 
+And if you want to try out "bleeding edge", master branch
+
+```docker pull falkowich/gvm10:edge```  
+
 ### Use with "docker run"
 
 #### Start with non-persistant storage
 
 ```docker run -p 443:443 falkowich/gvm10:sqlite```
+
+```docker pull falkowich/gvm10:edge```  
 
 #### Start with mounted volume
 
@@ -72,6 +78,15 @@ docker volume inspect gvm
     }
 ]
 ```
+
+```bash
+docker run \
+       -p 443:443 \
+       -v gvm:/usr/local/var/lib/gvm/ \
+       --name gvm10 \
+       falkowich/gvm10:edge
+```
+
 
 ## PostgrSQL DB backend
 

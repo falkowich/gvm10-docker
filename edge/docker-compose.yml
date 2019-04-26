@@ -1,0 +1,13 @@
+version: '3'
+services:
+  
+  gvm10:
+    image: falkowich/gvm10:edge
+    ports: 
+      - 443:443
+    restart: always
+    volumes:
+      - gvm:/usr/local/var/lib/gvm/
+
+volumes:
+  gvm:

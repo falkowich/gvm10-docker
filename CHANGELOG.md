@@ -2,6 +2,11 @@
 
 ## 2019-04-23
 
+- [FEATURE]: A build with the live master branch from greenbone gitrepo. [Falk]
+
+
+## 2019-04-23
+
 - [FEATURE]: First WIP with master-slave setups. [Falk]
 
 ## 2019-04-21
