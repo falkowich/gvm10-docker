@@ -184,6 +184,8 @@ user/pass - admin/admin
 
 ## Master - Slave setup [take 1 :)]
 
+I tried to do a writeup how to use these images in a _(hopefully)_ working environment on [sadsloth.net](https://sadsloth.net/post/gmv10dockermasterslave/).
+
 ### Master Setup
 
 ```bash
