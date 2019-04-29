@@ -9,20 +9,11 @@
       - [Start with non-persistant storage](#start-with-non-persistant-storage)
       - [Start with mounted volume](#start-with-mounted-volume)
   - [PostgrSQL DB backend](#postgrsql-db-backend)
-    - [Use with "docker run"](#use-with-%22docker-run%22-1)
-      - [Start with non-persistant storage](#start-with-non-persistant-storage-1)
       - [Start with mounted volume](#start-with-mounted-volume-1)
   - [Use with docker-compose](#use-with-docker-compose)
     - [Start in frontend](#start-in-frontend)
-    - [Start in backend](#start-in-backend)
     - [Check logs](#check-logs)
-  - [Maintanance](#maintanance)
-    - [With docker-compose](#with-docker-compose)
     - [With docker](#with-docker)
-  - [GSA](#gsa)
-  - [Master - Slave setup [take 1 :)]](#master---slave-setup-take-1)
-    - [Master Setup](#master-setup)
-    - [Slave Setup](#slave-setup)
   - [Disclamer](#disclamer)
   - [ToDo / Thoughts / Goals](#todo--thoughts--goals)
   - [Done [sorta]](#done-sorta)
@@ -160,6 +151,13 @@ DB maintanance (vacuum, analyze, cleanup-config-prefs, cleanup-port-names, clean
 
 Change admin password  
 ```docker-compose exec gvm10 /usr/local/sbin/gvmd -v --user=admin --new-password=super-secret-password```
+
+Update to "latest" image
+```bash
+docker-compose stop
+docker-compose pull
+docker-compose up -d
+```
 
 ### With docker
 

@@ -16,7 +16,7 @@
 
 ## 2019-04-19
 
-- [FEATURE]: Forked out a new bransh with postgresql as backend. [Falk]
+- [FEATURE]: Forked out a new branch with postgresql as backend. [Falk]
 
 ## 2019-04-16
 
