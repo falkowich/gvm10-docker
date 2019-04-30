@@ -15,6 +15,7 @@ RUN apt-get update ;\
     apt-get install apt-utils software-properties-common --no-install-recommends -yq ;\
     apt-get clean ;\
     apt-get update ;\
+    apt-get dist-upgrade -yq ;\
     apt-get install alien \
         cmake \
         pkg-config \
