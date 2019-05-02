@@ -13,8 +13,6 @@ ENV DEBIAN_FRONTEND=noninteractive \
 
 RUN apt-get update ;\
     apt-get install apt-utils software-properties-common --no-install-recommends -yq ;\
-    apt-get clean ;\
-    apt-get update ;\
     apt-get dist-upgrade -yq ;\
     apt-get install alien \
         cmake \
@@ -63,7 +61,8 @@ RUN apt-get update ;\
         curl \
         python-polib \
         rsync \
-        -yq 
+        -yq ;\
+    apt-get clean
 
 RUN curl --silent --show-error https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - ;\
     echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list ;\
