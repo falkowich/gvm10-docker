@@ -9,7 +9,7 @@ services:
     restart: always
     volumes:
       - gvm:/usr/local/var/lib/gvm/
-      - psql:/var/lib/postgresql/data
+      - psql:/var/lib/postgresql/
 volumes:
   gvm:
   psql:
