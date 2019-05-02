@@ -97,7 +97,7 @@ docker run \
 docker run \
        -p 443:443 \
        -v gvm:/usr/local/var/lib/gvm \
-       -v psql:/var/lib/postgresql/data \
+       -v psql:/var/lib/postgresql/ \
        --name gvm10 \
        falkowich/gvm10:psql
 ```
@@ -191,7 +191,7 @@ docker run \
        -p 443:443 \
        -p 9391:9391 \
        -v gvm:/usr/local/var/lib/gvm \
-       -v psql:/var/lib/postgresql/data \
+       -v psql:/var/lib/postgresql/ \
        --name gvm10 \
        falkowich/gvm10:psql
 ```
@@ -258,9 +258,8 @@ Much info was learned from [mikesplain/openvas-docker](https://github.com/mikesp
 ## ToDo / Thoughts / Goals
 
 - Fix workflow with testing before build.. _(..Lots of PEBKAC tonight..)_
-- docker-compose files.
+
 - better logging?
-- master/slave images?
 - openvas-check-setup type of check?
 - tools like arachni etc
 
@@ -269,3 +268,5 @@ Much info was learned from [mikesplain/openvas-docker](https://github.com/mikesp
 - ~~postgresql build~~
 - ~~separated containers for sql? (scrapped for the moment)~~
 - ~~better volume support~~
+- ~~master/slave images?~~
+- ~~docker-compose files.~~
