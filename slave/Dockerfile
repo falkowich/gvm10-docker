@@ -48,8 +48,6 @@ RUN apt-get update ;\
         perl-base \
         heimdal-dev \
         libpopt-dev \
-        #graphviz \
-        #nodejs \
         rpm \
         nsis \
         wget \
@@ -65,48 +63,41 @@ RUN apt-get update ;\
         rsync \
         -yq 
 
-#RUN curl --silent --show-error https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - ;\
-#    echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list ;\
-#    apt-get update ;\
-#    apt-get install yarn -yq;\
-#    rm -rf /var/lib/apt/lists/*
 
 RUN mkdir ${SRC_PATH} -p ;\
     cd ${SRC_PATH} ;\
-    wget -O gvm-libs-10.0.0.tar.gz https://github.com/greenbone/gvm-libs/archive/v10.0.0.tar.gz ;\
-    wget -O openvas-scanner-6.0.0.tar.gz https://github.com/greenbone/openvas-scanner/archive/v6.0.0.tar.gz;\
-    wget -O gvmd-8.0.0.tar.gz https://github.com/greenbone/gvmd/archive/v8.0.0.tar.gz ;\
-    #wget -O gsa-8.0.0.tar.gz https://github.com/greenbone/gsa/archive/v8.0.0.tar.gz ;\
-    wget -O openvas-smb-1.0.5.tar.gz https://github.com/greenbone/openvas-smb/archive/v1.0.5.tar.gz ;\
-    wget -O ospd-1.3.2.tar.gz https://github.com/greenbone/ospd/archive/v1.3.2.tar.gz
+    wget -O gvm-libs.tar.gz https://github.com/greenbone/gvm-libs/archive/v10.0.1.tar.gz ;\
+    wget -O openvas.tar.gz https://github.com/greenbone/openvas/archive/v6.0.1.tar.gz ;\
+    wget -O gvmd.tar.gz https://github.com/greenbone/gvmd/archive/v8.0.1.tar.gz ;\
+    wget -O openvas-smb.tar.gz https://github.com/greenbone/openvas-smb/archive/v1.0.5.tar.gz ;\
+    wget -O ospd.tar.gz https://github.com/greenbone/ospd/archive/v1.3.2.tar.gz
+
 
 RUN cd ${SRC_PATH} ;\
     find . -name \*.gz -exec tar zxvfp {} \;
 
 
-RUN  cd ${SRC_PATH}/gvm-libs-10.0.0 ;\
+RUN  cd ${SRC_PATH}/gvm-libs-* ;\
     mkdir build ;\
     cd build ;\
     cmake .. ;\
     make ;\
-    #make doc-full ;\
     make install ;\
     cd ${SRC_PATH}
 
-RUN  cd ${SRC_PATH}/openvas-smb-1.0.5 ;\
+RUN  cd ${SRC_PATH}/openvas-smb-* ;\
     mkdir build ;\
-    cd build/ ;\
+    cd build ;\
     cmake .. ;\
     make ;\
     make install ;\
     cd ${SRC_PATH}
 
-RUN  cd ${SRC_PATH}/openvas-scanner-6.0.0 ;\
+RUN  cd ${SRC_PATH}/openvas-* ;\
     mkdir build ;\
-    cd build/ ;\
+    cd build ;\
     cmake .. ;\
     make ;\
-    #make doc-full ;\
     make install ;\
     cd ${SRC_PATH}
 
@@ -116,26 +107,16 @@ RUN service redis-server restart
 
 RUN greenbone-nvt-sync 
 
-RUN cd ${SRC_PATH}/gvmd-8.0.0 ;\
+RUN cd ${SRC_PATH}/gvmd-* ;\
     mkdir build ;\
     cd build/ ;\
     cmake .. ;\
     make ;\
-#    make doc-full ;\
     make install ;\
     cd ${SRC_PATH}
-#
+
 RUN ldconfig
-#
-#RUN cd ${SRC_PATH}/gsa-8.0.0 ;\
-#    sed -i 's/#ifdef GIT_REV_AVAILABLE/#ifdef GIT_REVISION/g' ${SRC_PATH}/gsa-8.0.0/gsad/src/gsad.c ;\
-#    mkdir build ;\
-#    cd build/ ;\
-#    cmake .. ;\
-#    make ;\
-#    make doc-full ;\
-#    make install ;\
-#    cd ${SRC_PATH}
+
 
 RUN rm  /root/${SRC_PATH}/ -rf
 
