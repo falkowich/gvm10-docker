@@ -50,6 +50,10 @@ gvmd --listen=0.0.0.0 --port=9391
 echo "---> Starting GSAD"
 gsad --mlisten=0.0.0.0 --mport=9391
 
+echo "---> Set E-Mail Config"
+echo $Adminaddr > /etc/nullmailer/adminaddr
+echo $Default_Domain > /etc/nullmailer/defaultdomain
+echo $SMTP_Host > /etc/nullmailer/remotes
 
 # WHATTODOWITTHIS?
 if [ -z "$BUILD" ]; then
