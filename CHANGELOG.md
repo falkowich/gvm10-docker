@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 2019-09-17
+
+- [FEATURE] Updated images to GVMD 8.0.1 from upstream. [#12](https://github.com/falkowich/gvm10-docker/issues/12) [Falk]
+- [BUG] Added dependensies for pdf reports [#10](https://github.com/falkowich/gvm10-docker/issues/10) [Falk]
+  
 ## 2019-04-26
 
 - [FEATURE] [edge]: A build with the live master branch from greenbone gitrepo. [Falk]

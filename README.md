@@ -18,7 +18,22 @@
   - [ToDo / Thoughts / Goals](#todo--thoughts--goals)
   - [Done [sorta]](#done-sorta)
 
-Suggestions and bugreports are always welcome, just post an issue over at [falkowich/gvm10-docker](https://github.com/falkowich/gvm10-docker)  
+Suggestions and bugreports are always welcome, just post an issue over at [falkowich/gvm10-docker](https://github.com/falkowich/gvm10-docker) 
+
+This table shows what versions makes up what tags on dockerhub.  
+They versions are named after the main GVMD version upstream.
+
+| Image type | GVMD version | Docker Tag | Github Branch | Description | 
+|---|---|---|---|---|
+| sqlite | master | master  | master | Latest code from upstream with sqlite and gsa |
+| sqlite | 8.0.1 | sqlite  | release-8.0.1 | Latest stable image with sqlite and gsa |
+| psql | 8.0.1 | psql  | release-8.0.1 | Latest stable image with psql and gsa |
+| slave | 8.0.1| slave | release-8.0.1 | Latest stable image that is created to be a scanner/slave image |
+| sqlite | 8.0.0 | sqlite-8.0.0  | release-8.0.0 | Older image with sqlite and gsa |
+| psql | 8.0.0 | psql-8.0.0  | release-8.0.0 | Older image with sqlite and gsa |
+| slave | 8.0.0 | slave-8.0.0  | release-8.0.0 | Older image that is created to be a scanner/slave image |
+
+_(If you can come up on a better way to handle these versions and images om, please throw me a line or create an issue on it) :)_
 
 ## Some examples and info
 
@@ -256,9 +271,6 @@ But then, perhaps it doesn't get more interesting than this :)
 Much info was learned from [mikesplain/openvas-docker](https://github.com/mikesplain/openvas-docker) that makes good production ready container builds.
 
 ## ToDo / Thoughts / Goals
-
-- Fix workflow with testing before build.. _(..Lots of PEBKAC tonight..)_
-
 - better logging?
 - openvas-check-setup type of check?
 - tools like arachni etc
@@ -270,3 +282,4 @@ Much info was learned from [mikesplain/openvas-docker](https://github.com/mikesp
 - ~~better volume support~~
 - ~~master/slave images?~~
 - ~~docker-compose files.~~
+- ~~Fix workflow with testing before build.. _(..Lots of PEBKAC tonight..)~~
