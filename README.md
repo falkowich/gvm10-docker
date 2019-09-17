@@ -25,7 +25,10 @@ They versions are named after the main gvm-libs version upstream.
 
 | Image type | gvm-libs version| Docker Tag | Github Branch | Description | 
 |---|---|---|---|---|
-| sqlite | master | master  | master | Latest code from upstream with sqlite and gsa |
+| sqlite | master | master-dev  | master | Dev from master upstream with sqlite and gsa |
+| sqlite | 10.0.1 | sqlite-dev  | master | Dev from latest release upstream with sqlite and gsa |
+| psql | 10.0.1 | psql-dev  | master | Dev from latest release upstream with psql and gsa |
+| slave | 10.0.1| slave-dev | master | Dev from latest release upstream created to be a scanner/slave image |
 | sqlite | 10.0.1 | sqlite  | release-10.0.1 | Latest stable image with sqlite and gsa |
 | psql | 10.0.1 | psql  | release-10.0.1 | Latest stable image with psql and gsa |
 | slave | 10.0.1| slave | release-10.0.1 | Latest stable image that is created to be a scanner/slave image |
