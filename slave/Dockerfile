@@ -62,7 +62,8 @@ RUN apt-get update ;\
         python-polib \
         rsync \
         gettext \
-        -yq 
+        -yq ;\
+    apt-get clean
 
 
 RUN mkdir ${SRC_PATH} -p ;\

@@ -62,13 +62,19 @@ RUN apt-get update ;\
         python-polib \
         rsync \
         gettext \
+        xmlstarlet \
+        zip \
+        gnupg \
         -yq ;\
-    apt-get clean
+    apt-get install texlive-latex-extra --no-install-recommends -yq ;\
+    apt-get install texlive-fonts-recommended -yq
+
 
 RUN curl --silent --show-error https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - ;\
     echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list ;\
     apt-get update ;\
-    apt-get install yarn -yq;\
+    apt-get install yarn -yq ;\
+    apt-get clean ;\
     rm -rf /var/lib/apt/lists/*
 
 RUN mkdir ${SRC_PATH} -p ;\
