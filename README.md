@@ -21,17 +21,17 @@
 Suggestions and bugreports are always welcome, just post an issue over at [falkowich/gvm10-docker](https://github.com/falkowich/gvm10-docker) 
 
 This table shows what versions makes up what tags on dockerhub.  
-They versions are named after the main GVMD version upstream.
+They versions are named after the main gvm-libs version upstream.
 
-| Image type | GVMD version | Docker Tag | Github Branch | Description | 
+| Image type | gvm-libs version| Docker Tag | Github Branch | Description | 
 |---|---|---|---|---|
 | sqlite | master | master  | master | Latest code from upstream with sqlite and gsa |
-| sqlite | 8.0.1 | sqlite  | release-8.0.1 | Latest stable image with sqlite and gsa |
-| psql | 8.0.1 | psql  | release-8.0.1 | Latest stable image with psql and gsa |
-| slave | 8.0.1| slave | release-8.0.1 | Latest stable image that is created to be a scanner/slave image |
-| sqlite | 8.0.0 | sqlite-8.0.0  | release-8.0.0 | Older image with sqlite and gsa |
-| psql | 8.0.0 | psql-8.0.0  | release-8.0.0 | Older image with sqlite and gsa |
-| slave | 8.0.0 | slave-8.0.0  | release-8.0.0 | Older image that is created to be a scanner/slave image |
+| sqlite | 10.0.1 | sqlite  | release-10.0.1 | Latest stable image with sqlite and gsa |
+| psql | 10.0.1 | psql  | release-10.0.1 | Latest stable image with psql and gsa |
+| slave | 10.0.1| slave | release-10.0.1 | Latest stable image that is created to be a scanner/slave image |
+| sqlite | 10.0.0 | sqlite-10.0.0  | release-10.0.0 | Older image with sqlite and gsa |
+| psql | 10.0.0 | psql-10.0.0  | release-10.0.0 | Older image with sqlite and gsa |
+| slave | 10.0.0 | slave-10.0.0  | release-10.0.0 | Older image that is created to be a scanner/slave image |
 
 _(If you can come up on a better way to handle these versions and images om, please throw me a line or create an issue on it) :)_
 
