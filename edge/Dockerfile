@@ -61,6 +61,7 @@ RUN apt-get update ;\
         curl \
         python-polib \
         rsync \
+        gettext \
         -yq ;\
     apt-get clean
 
