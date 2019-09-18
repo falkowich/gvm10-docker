@@ -104,7 +104,7 @@ RUN  cd ${SRC_PATH}/openvas-smb-1.0.5 ;\
     make install ;\
     cd ${SRC_PATH}
 
-RUN  cd ${SRC_PATH}/openvas-scanner-6.0.0 ;\
+RUN  cd ${SRC_PATH}/openvas-6.0.0 ;\
     mkdir build ;\
     cd build/ ;\
     cmake .. ;\
