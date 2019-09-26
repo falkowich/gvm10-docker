@@ -3,6 +3,7 @@
 ![Docker Cloud Automated build](https://img.shields.io/docker/cloud/automated/falkowich/gvm10.svg?style=plastic) ![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/falkowich/gvm10.svg?style=plastic)  ![Docker Pulls](https://img.shields.io/docker/pulls/falkowich/gvm10.svg?style=plastic)
 
 - [gvm10-docker](#gvm10-docker)
+  - [Tags and versions](#tags-and-versions)
   - [Some examples and info](#some-examples-and-info)
   - [Sqlite3 DB backend](#sqlite3-db-backend)
     - [Use with "docker run"](#use-with-%22docker-run%22)
@@ -20,21 +21,26 @@
 
 Suggestions and bugreports are always welcome, just post an issue over at [falkowich/gvm10-docker](https://github.com/falkowich/gvm10-docker) 
 
-This table shows what versions makes up what tags on dockerhub.  
-They versions are named after the main gvm-libs version upstream.
+## Tags and versions
 
-| Image type | gvm-libs version| Docker Tag | Github Branch | Description | 
-|---|---|---|---|---|
-| sqlite | master | master-dev  | master | Dev from master upstream with sqlite and gsa |
-| sqlite | 10.0.1 | sqlite-dev  | master | Dev from latest release upstream with sqlite and gsa |
-| psql | 10.0.1 | psql-dev  | master | Dev from latest release upstream with psql and gsa |
-| slave | 10.0.1| slave-dev | master | Dev from latest release upstream created to be a scanner/slave image |
-| sqlite | 10.0.1 | sqlite  | release-10.0.1 | Latest stable image with sqlite and gsa |
-| psql | 10.0.1 | psql  | release-10.0.1 | Latest stable image with psql and gsa |
-| slave | 10.0.1| slave | release-10.0.1 | Latest stable image that is created to be a scanner/slave image |
-| sqlite | 10.0.0 | sqlite-10.0.0  | release-10.0.0 | Older image with sqlite and gsa |
-| psql | 10.0.0 | psql-10.0.0  | release-10.0.0 | Older image with sqlite and gsa |
-| slave | 10.0.0 | slave-10.0.0  | release-10.0.0 | Older image that is created to be a scanner/slave image |
+This table shows what versions makes up what tags on dockerhub.  
+_See https://github.com/falkowich/gvm10-docker/issues/17_
+
+* stable » When the latest image has been stable for some time, it merges to this branch. This is the proposed prod branch  
+* latest » Latest update to the upstream release 10.0 releasetree.
+* dev » Upstream master, to test new functions and prepare for next major release.  
+
+| image type | upstream gvm-libs | docker Tag | local branch | autobuild on dockerhub| description | 
+|---|---|---|---|---|---|
+| sqlite | master | sqlite-dev  | master | yes | sqlite and gsa |
+| psql | master | psql-dev  | master | yes | psql and gsa |
+| slave | master | slave-dev | master | yes | scanner (slave) without gsa |
+| sqlite | 10.0-git | sqlite-latest  | latest | yes | sqlite and gsa |
+| psql | 10.0-git | psql-latest   | latest | yes | psql and gsa |
+| slave | 10.0-git | slave-latest  | latest | yes | scanner (slave) without gsa |
+| sqlite | 10.0 | sqlite | stable | no | sqlite and gsa |
+| psql | 10.0 | psql | stable | no | psql and gsa |
+| slave | 10.0 | slave | stable| no | scanner (slave) without gsa |
 
 _(If you can come up on a better way to handle these versions and images om, please throw me a line or create an issue on it) :)_
 
