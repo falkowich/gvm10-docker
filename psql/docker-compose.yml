@@ -2,7 +2,7 @@ version: '3'
 services:
   
  gvm10:
-    image: falkowich/gvm10:psql-10.0.0
+    image: falkowich/gvm10:psql
     ports: 
       - 443:443
       - 9391:9391

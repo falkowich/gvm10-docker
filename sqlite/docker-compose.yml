@@ -2,7 +2,7 @@ version: '3'
 services:
   
   gvm10:
-    image: falkowich/gvm10:sqlite-10.0.0
+    image: falkowich/gvm10:sqlite
     ports: 
       - 443:443
       - 9391:9391

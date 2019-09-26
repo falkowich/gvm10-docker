@@ -2,7 +2,7 @@ version: '3'
 services:
   
   gvm10:
-    image: falkowich/gvm10:slave-10.0.0
+    image: falkowich/gvm10:slave
     ports: 
       - 9391:9391
     restart: always
