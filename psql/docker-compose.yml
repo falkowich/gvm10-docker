@@ -1,8 +1,9 @@
 version: '3'
 services:
   
- gvm10:
+  gvm10:
     image: falkowich/gvm10:psql-latest
+    ports:
       - 9391:9391
     restart: always
     volumes:
