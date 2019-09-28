@@ -34,11 +34,11 @@ else
 fi
 
 
-# Try to start certdata and scapdata sync
-#echo "---> Starting Certsync.." ;\
-#/usr/local/sbin/greenbone-certdata-sync ;\
-#echo "---> Starting Scapsync.." ;\
-#/usr/local/sbin/greenbone-scapdata-sync
+ Try to start certdata and scapdata sync
+echo "---> Starting Certsync.." ;\
+/usr/local/sbin/greenbone-certdata-sync ;\
+echo "---> Starting Scapsync.." ;\
+/usr/local/sbin/greenbone-scapdata-sync
 
 
 # Start GVM stuffs

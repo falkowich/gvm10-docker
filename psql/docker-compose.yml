@@ -4,6 +4,7 @@ services:
   gvm10:
     image: falkowich/gvm10:psql-latest
     ports:
+      - 443:443
       - 9391:9391
     restart: always
     volumes:
