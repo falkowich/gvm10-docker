@@ -66,6 +66,8 @@ RUN apt-get update ;\
         python-polib \
         rsync \
         -yq ;\
+    apt-get install texlive-latex-extra --no-install-recommends -yq ;\
+    apt-get install texlive-fonts-recommended -yq ;\
     apt-get clean
 
 RUN curl --silent --show-error https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - ;\
