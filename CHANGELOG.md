@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 2019-11-06
+
+- [BUG] [stable]: PDF Report Download - Unable to open [#23](https://github.com/falkowich/gvm10-docker/issues/23) Fixed [samredinet, Falk] 
+  
 ## 2019-04-26
 
 - [FEATURE] [edge]: A build with the live master branch from greenbone gitrepo. [Falk]
