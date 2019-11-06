@@ -44,6 +44,8 @@ _See https://github.com/falkowich/gvm10-docker/issues/17_
 
 _(If you can come up on a better way to handle these versions and images om, please throw me a line or create an issue on it) :)_
 
+Want to chat or have a question about the build, join up here [slack invite](https://join.slack.com/t/sadsloth/shared_invite/enQtODI0MTM2Nzc4OTQ0LWZmOThkYzY4MzAwZjVjYzhmMDdkYTY3MmFkOTk0YmNlZmQ2MWMwNDM5MmE4ZjUzZmU5MmU0YjQzYmE3YzhjZmU) and chat, and perhaps help others out :)
+
 ## Some examples and info
 
 I tried to do a writeup how to use these images in a _(hopefully)_ working environment on [sadsloth.net](https://sadsloth.net/post/gmv10dockermasterslave/).
