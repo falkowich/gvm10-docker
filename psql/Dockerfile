@@ -3,12 +3,14 @@ FROM ubuntu:19.04
 COPY conf/openvassd.conf /usr/local/etc/openvas/openvassd.conf
 COPY script/entrypoint.sh /entrypoint.sh
 
+ARG MAILHUB
 ENV DEBIAN_FRONTEND=noninteractive \
     GSE_PASSWORD=admin \
     HOSTNAME=gs \
     SRC_DIR=gse-git \
     SRC_PATH=/root/${SRC_DIR} \
-    PGUSERNAME=root
+    PGUSERNAME=root \
+    MAILHUB=${MAILHUB}
 
 
 RUN apt-get update ;\
@@ -140,6 +142,27 @@ RUN cd ${SRC_PATH}/gsa ;\
     make doc-full ;\
     make install ;\
     cd ${SRC_PATH}
+
+#Install ssmtp, cron and nano as cron default editor
+RUN curl --silent --show-error -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - ;\
+    apt-get update && apt-get install -y \
+    ssmtp \
+    nano \
+	cron ;\
+    apt-get clean
+
+COPY script/update.sh /update.sh
+COPY conf/ssmtp.conf /etc/ssmtp/ssmtp.conf
+
+#SSMTP configuration without TLS
+RUN echo "mailhub=${MAILHUB}" >> /etc/ssmtp/ssmtp.conf ;\
+    echo "localhost localhost.localdomain" >> /etc/hosts
+
+RUN chmod +x update.sh ;\
+    echo "*/1 * * * * /update.sh > /var/log/cron.log 2>&1" >> /etc/cron.d/gvm-cron ;\
+    chmod 0644 /etc/cron.d/gvm-cron ;\
+    touch /var/log/cron.log ;\
+    crontab /etc/cron.d/gvm-cron
 
 RUN rm  /root/${SRC_PATH}/ -rf
 
