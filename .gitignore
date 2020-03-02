@@ -1,1 +1,4 @@
 *.code-workspace
+.env
+.ssh
+.git*

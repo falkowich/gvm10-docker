@@ -3,6 +3,8 @@ services:
   
   gvm10:
     image: falkowich/gvm10:psql-latest
+    environment:
+      - MAILHUB=${MAILHUB}
     hostname: gvm
     ports:
       - 443:443

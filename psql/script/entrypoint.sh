@@ -66,6 +66,9 @@ gvmd --listen=0.0.0.0 --port=9391
 echo "---> Starting GSAD"
 gsad --mlisten=0.0.0.0 --mport=9391
 
+#SSMTP configuration without TLS
+echo "mailhub=${MAILHUB}" >> /etc/ssmtp/ssmtp.conf;\
+echo "localhost localhost.localdomain" >> /etc/hosts
 #Starting Cron
 cron 
 

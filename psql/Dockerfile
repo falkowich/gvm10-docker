@@ -9,8 +9,7 @@ ENV DEBIAN_FRONTEND=noninteractive \
     HOSTNAME=gs \
     SRC_DIR=gse-git \
     SRC_PATH=/root/${SRC_DIR} \
-    PGUSERNAME=root \
-    MAILHUB=${MAILHUB}
+    PGUSERNAME=root
 
 
 RUN apt-get update ;\
@@ -154,10 +153,7 @@ RUN curl --silent --show-error -sS https://dl.yarnpkg.com/debian/pubkey.gpg | su
 COPY script/update.sh /update.sh
 COPY conf/ssmtp.conf /etc/ssmtp/ssmtp.conf
 
-#SSMTP configuration without TLS
-RUN echo "mailhub=${MAILHUB}" >> /etc/ssmtp/ssmtp.conf ;\
-    echo "localhost localhost.localdomain" >> /etc/hosts
-
+#cron update CERT; SCAP; NVTs database
 RUN chmod +x update.sh ;\
     echo "*/1 * * * * /update.sh > /var/log/cron.log 2>&1" >> /etc/cron.d/gvm-cron ;\
     chmod 0644 /etc/cron.d/gvm-cron ;\
