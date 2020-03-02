@@ -155,7 +155,7 @@ COPY conf/ssmtp.conf /etc/ssmtp/ssmtp.conf
 
 #cron update CERT; SCAP; NVTs database
 RUN chmod +x update.sh ;\
-    echo "*/1 * * * * /update.sh > /var/log/cron.log 2>&1" >> /etc/cron.d/gvm-cron ;\
+    echo "0 12 * * SUN /update.sh > /var/log/cron.log 2>&1" >> /etc/cron.d/gvm-cron ;\
     chmod 0644 /etc/cron.d/gvm-cron ;\
     touch /var/log/cron.log ;\
     crontab /etc/cron.d/gvm-cron
