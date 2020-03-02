@@ -3,7 +3,6 @@ FROM ubuntu:19.04
 COPY conf/openvassd.conf /usr/local/etc/openvas/openvassd.conf
 COPY script/entrypoint.sh /entrypoint.sh
 
-ARG MAILHUB
 ENV DEBIAN_FRONTEND=noninteractive \
     GSE_PASSWORD=admin \
     HOSTNAME=gs \
