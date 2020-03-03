@@ -141,6 +141,24 @@ RUN cd ${SRC_PATH}/gsa ;\
     make install ;\
     cd ${SRC_PATH}
 
+#Install ssmtp, cron and nano as cron default editor
+RUN curl --silent --show-error -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - ;\
+    apt-get update && apt-get install -y \
+    ssmtp \
+    nano \
+	cron ;\
+    apt-get clean
+
+COPY script/update.sh /update.sh
+COPY conf/ssmtp.conf /etc/ssmtp/ssmtp.conf
+
+#cron update CERT; SCAP; NVTs database
+RUN chmod +x update.sh ;\
+    echo "0 12 * * SUN /update.sh > /var/log/cron.log 2>&1" >> /etc/cron.d/gvm-cron ;\
+    chmod 0644 /etc/cron.d/gvm-cron ;\
+    touch /var/log/cron.log ;\
+    crontab /etc/cron.d/gvm-cron
+
 RUN rm  /root/${SRC_PATH}/ -rf
 
 CMD /entrypoint.sh

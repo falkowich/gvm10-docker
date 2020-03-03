@@ -66,10 +66,14 @@ gvmd --listen=0.0.0.0 --port=9391
 echo "---> Starting GSAD"
 gsad --mlisten=0.0.0.0 --mport=9391
 
-
+#SSMTP configuration without TLS
+echo -e "\nmailhub=${MAILHUB}" >> /etc/ssmtp/ssmtp.conf
+echo "localhost localhost.localdomain" >> /etc/hosts
+#Starting Cron
+cron 
 
 # WHATTODOWITTHIS?
 if [ -z "$BUILD" ]; then
   echo "Tailing logs"
-  tail -F /usr/local/var/log/gvm/*
+  tail -F /usr/local/var/log/gvm/* -F /var/log/cron.log
 fi
